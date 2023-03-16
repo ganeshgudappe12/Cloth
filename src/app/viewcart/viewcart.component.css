@@ -1,0 +1,40 @@
+.value-button {
+  /* border: 1px solid #ddd;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  vertical-align: middle;
+  padding: 5px 15px;
+  background: #eee; */
+
+}
+
+.value-button:hover {
+  cursor: pointer;
+}
+
+input#number {
+  /* border: none;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  margin-top: 10px;
+  width: 40px;
+  height: 40px;
+  position: relative;
+  padding: 5px 15px; */
+}
+
+p {
+  line-height: 0.5;
+}
+
+h4 {
+  width: 300px;
+  word-break: break-all;
+  white-space: normal;
+}
+
+td {
+  padding: 0px;
+  padding-top: 5px;
+}

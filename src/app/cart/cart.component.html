@@ -1,0 +1,63 @@
+<app-header></app-header>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-7" style="margin-top: 15px;">
+      <div class="row">
+        <div class="col-3 left-side d-flex align-items-center ">
+          <ul class="list-group" *ngFor="let product of productDetails.groupimg">
+            <li class="list-group-item "><img src="{{productDetails.image}}" alt=""
+                (click)="selectImg(productDetails.image)">
+            </li>
+            <li class="list-group-item "><img src="{{product.img1}}" alt="" (click)="selectImg(product.img1)"></li>
+            <li class="list-group-item "><img src="{{product.img2}}" alt="" (click)="selectImg(product.img2)"></li>
+            <li class="list-group-item "><img src="{{product.img3}}" alt="" (click)="selectImg(product.img3)"></li>
+            <li class="list-group-item "><img src="{{product.img4}}" alt="" (click)="selectImg(product.img4)"></li>
+
+            <!-- <li class="list-group-item"><img src="assets/productimg/img2.webp" alt=""></li>
+            <li class="list-group-item"><img src="assets/productimg/img3.webp" alt=""></li>
+            <li class="list-group-item "><img src="assets/productimg/img4.webp" alt=""></li> -->
+          </ul>
+        </div>
+        <div class="col-8">
+          <img [src]="image==''?productDetails.image:image" alt="" style="height: 800px;width:550px;">
+        </div>
+      </div>
+    </div>
+    <div class="col-5" style="margin-top: 15px;">
+      <div>
+        <div class="col-12">
+          <span style="font-size: 12px;letter-spacing: 2px;"> COLLECTION</span>
+          <h3 style="font-family: playfairdisplay;">{{productDetails.title}}</h3>
+          <span>Product Code : ML12040-307</span><br>
+          <span style="font-size: large; font-weight: bold;">&#8377; &nbsp;{{productDetails.price}}</span><br>
+          <span style="font-size: 10px;">inclusive of all taxes</span>
+        </div>
+        <div class="col-12 mt-3">
+          <span style="font-size: 15px;">Select Size</span><br>
+          <a style="border: 1px solid gold;text-decoration: none; color: black; margin-top: 10px;" class="mr-2 "
+            *ngFor="let size of productDetails.size.split(',')">
+            <span style="padding: 4px 8px">{{size|titlecase}}</span>
+          </a>
+          <!-- <a href="http://" style="border: 1px solid gold;text-decoration: none;" class="m-2">
+            <span style="padding: 4px 8px">M</span></a><br> -->
+
+
+        </div>
+        <div class="col-12 mt-3">
+          <span style="font-size: 15px;">Select Quantity</span><br>
+
+          <span class="value-button">-</span>
+          <input type="text" id="number" value="1" placeholder="1" />
+          <span class="value-button">+</span><br>
+
+          <button class="btn btn-primary mt-2 col-6" style="background-color: #881000; border: #881000;"><span
+              style="font-size: 18px;width: 120px;">Add to
+              cart</span></button>
+
+        </div>
+        <div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

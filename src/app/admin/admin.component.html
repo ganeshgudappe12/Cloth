@@ -1,0 +1,472 @@
+<app-header></app-header>
+<div class="container">
+  <div class="container-fluid">
+    <div class="row" style="margin-top: 5%;">
+      <div class="co12 mt-10 ">
+        <div class="dashboard">
+          <div class="dashboard-sub bg-success">
+            <p class="fa fa-money fa-2x">Total sell</p>
+            <p>{{0}}</p>
+          </div>
+          <div class="dashboard-sub bg-info">
+            <p class="fa fa-user fa-2x">Total Customer</p>
+            <p>{{0}}</p>
+          </div>
+          <div class="dashboard-sub bg-dark">
+            <p class="fa fa-first-order fa-2x">Total order</p>
+            <p>{{0}}</p>
+          </div>
+          <div class="dashboard-sub bg-warning">
+            <p class="fa fa-sellsy fa-2x">Total Profit </p>
+            <p>{{0}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row " style="margin-top: 10%;">
+      <div class="col-3"><button class="btn btn-info " id="btnadd" (click)="userAdd()">Add
+          User
+        </button></div>
+      <div class="col-3"><button class="btn btn-success" (click)="User()">Add
+          Product
+        </button></div>
+      <div class="col-3"><button type="button" class="btn btn-success" (click)="Carousel()"> Add Carousel
+        </button></div>
+      <div class="col-3"><button class=" btn btn-info" (click)="productDetails();">Product Details</button></div>
+    </div>
+
+    <div class="row  " style="margin-top: 40px;">
+      <div class="col4 btnAdd">
+
+
+        <div class="modal fade" role="dialog" id="adduser" aria-labelledby="addusertitle" aria-hidden="true"
+          tabindex="-1">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <!--modal header-->
+              <div class="modal-header btn-info">
+                <h5 class="modal-title fa fa-user" id="addusertitle">Add User</h5>
+                <button type="button" class="close" (click)="userModalClose()" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <!--modal body-->
+                <form [formGroup]="userform">
+                  <div>
+                    <table class="tbluser">
+                      <tr>
+                        <td>
+                          <label class="form-label">Enter Your Name</label>
+                          <input type="text" id="fname" class="form-control" formControlName="fname"
+                            placeholder="Enter your first name">
+                          <span class="text-danger"
+                            *ngIf="userform.controls['fname'].dirty && userform.hasError('required','fname')">*Enter
+                            Name</span>
+                        </td>
+                        <td>
+                          <label>Enter last Name</label>
+                          <input type="text" id="lname" class="form-control" formControlName="lname"
+                            placeholder="Enter your last name">
+                          <span class="text-danger"
+                            *ngIf="userform.controls['lname'].dirty && userform.hasError('required','lname')">*Enter
+                            Last Name</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <label>User ID</label>
+                          <input type="text" id="uid" class="form-control" formControlName="uid"
+                            placeholder="Enter userid">
+                          <span class="text-danger"
+                            *ngIf="userform.controls['uid'].dirty && userform.hasError('required','uid')">*Enter
+                            Userid </span>
+                        </td>
+                        <td>
+                          <label>Password</label>
+                          <input type="password" id="pwd" class="form-control" formControlName="pwd"
+                            placeholder="Enter password" required>
+                          <span class="text-danger"
+                            *ngIf="userform.controls['pwd'].dirty && userform.hasError('required','pwd')">*Enter
+                            Password </span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <label>Role</label>
+                          <select class="form-select role" formControlName="role" id="role" name="role">
+                            <option value="" selected>Select Role</option>
+                            <option *ngFor="let roll of roll; let i = index" value={{roll.rollid}}>{{roll.rollname}}
+                            </option>
+
+
+                          </select>
+                        </td>
+                        <td>
+                          <label>Confirm Password</label>
+                          <input type="password" id="cnfpwd" class="form-control" formControlName="cnfpwd"
+                            placeholder="Enter confirm password" required>
+                          <span class="text-danger"
+                            *ngIf="userform.controls['cnfpwd'].dirty && userform.hasError('required','cnfpwd')">*Enter
+                            Confirm Password </span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <label>DOB</label>
+                          <input type="date" style="width: 230px; margin-bottom: 22px; padding: 3px;"
+                            formControlName="date">
+                        </td>
+                        <td>
+                          <label>Gender</label>
+                          <select class="form-select gender" formControlName="gender" id="gender" name="gender">
+                            <option value="" selected>Select Gender</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+
+                          </select>
+                        </td>
+                      </tr>
+                    </table>
+
+
+                  </div>
+
+                </form>
+              </div>
+              <!--modal footer-->
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" [disabled]="!userform.valid" class="btn btn-primary"
+                  (click)="addUser()">Submit</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="col4  product">
+
+
+        <div class="modal fade" role="dialog" id="addproduct" aria-labelledby="addproducttitle" aria-hidden="true"
+          tabindex="-1">
+          <div class="modal-dialog" style="max-width: 90vw;">
+            <div class="modal-content">
+              <!--modal header-->
+              <div class="modal-header btn-info">
+                <h5 class="modal-title" id="addproducttitle">Add Product</h5>
+                <button type="button" class="close" data-dismiss="modal" style="color: white;"
+                  (click)="closeUserModal()" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <!--modal body-->
+                <form [formGroup]="productform">
+                  <div>
+                    <table class="tbluser">
+                      <tr>
+                        <td>
+                          <label>Enter Product Name</label>
+                          <input type="text" id="pname" class="form-control" formControlName="pname"
+                            placeholder="Enter Product name" required>
+                          <span class="text-danger" *ngIf="productform.controls['pname'].dirty &&
+                            productform.hasError('required','pname')">*Enter
+                            Product Name </span>
+                        </td>
+                        <td>
+                          <label>Main-category</label>
+                          <select class="form-select category" formControlName="category" id="category" name="category">
+                            <option value="" selected>Select Category</option>
+                            <option *ngFor="let Category of Category" value={{Category.categoryid}}>
+                              {{Category.categoryname}}
+                            </option>
+
+                          </select>
+                        </td>
+
+                      </tr>
+                      <tr>
+                        <td>
+                          <label>Sub-category</label><br>
+                          <select class="form-select subcategory" formControlName="subcategory" id="subcategory"
+                            name="subcategory">
+                            <option value="" selected>Select Category</option>
+                            <option value="Shirt">Shirt</option>
+                            <option value="Pant">Pant</option>
+                            <option value="T-shirt">T-shirt</option>
+                          </select>
+                        </td>
+                        <td>
+                          <label>Sizes</label><br>
+                          <div class="row">
+                            <div class="col-10">
+                              <input type="checkbox" id="s" value="S" formControlName="s" style="margin-left: 40px;"
+                                class="product-size"><span class="size">S</span>
+                              <input type="checkbox" class="product-size" id="m" value="M" formControlName="m"><span
+                                class="size">M</span>
+                              <input type="checkbox" class="product-size" id="l" value="L" formControlName="l"><span
+                                class="size">L</span>
+                              <input type="checkbox" class="product-size" id="xl" value="XL" formControlName="xl"><span
+                                class="size">XL</span>
+                            </div>
+
+
+                          </div>
+                          <!-- <label>Sizes</label> -->
+
+
+
+
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <label>Price</label>
+                          <input type="text" id="price" class="form-control" formControlName="price"
+                            placeholder="Enter price">
+                          <span class="text-danger" *ngIf="productform.controls['price'].dirty &&
+                            productform.hasError('required','price')">*Enter
+                            Product Price </span>
+                        </td>
+                        <td>
+                          <label>Qty</label>
+                          <input type="text" id="qty" class="form-control" formControlName="qty"
+                            placeholder="Enter Qty">
+                          <span class="text-danger"
+                            *ngIf="productform.controls['qty'].dirty && productform.hasError('required','qty')">*Enter
+                            Product Quantity </span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <label>Brand</label>
+                          <select class="form-select brand" formControlName="brand" id="brand" name="brand">
+                            <option value="" selected>Select Brand</option>
+                            <option value="Jockey">Jockey</option>
+                            <option value="Nike">Nike</option>
+
+                          </select>
+                        </td>
+                        <td>
+                          <label>Color</label>
+                          <select class="form-select color" formControlName="color" id="color" name="color">
+                            <option value="" selected>Select Color</option>
+                            <option value="Black">Black</option>
+                            <option value="Red">Red</option>
+
+                          </select>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <label>Main Image</label>
+                          <input type="file" class="file-upload" id="mainimg" formControlName="mainimg"
+                            style="width: 209px;" (change)="handleFileInput($event,'mainimg')">
+                          <img class="product-img" [src]="mainImageUrl">
+                          <span class="text-danger" *ngIf="productform.controls['mainimg'].dirty &&
+                            productform.hasError('required','mainimg')">*Select
+                            Image1
+                          </span>
+                        </td>
+                        <td>
+                          <label>Images 1</label>
+                          <input type="file" class="file-upload" id="img1" formControlName="img1" style="width: 230px;"
+                            (change)="handleFileInput($event,'img1')">
+                          <img class="product-img" [src]="imageUrl1">
+                          <span class="text-danger" *ngIf="productform.controls['img1'].dirty &&
+                            productform.hasError('required','img1')">*Select
+                            Image1
+                          </span>
+                        </td>
+                        <td>
+                          <label>Images 2</label>
+                          <input type="file" id="img2" formControlName="img2" style="width: 230px;"
+                            (change)="handleFileInput($event,'img2')">
+                          <img class="product-img" [src]="imageUrl2">
+                          <span class="text-danger" *ngIf="productform.controls['img2'].dirty &&
+                            productform.hasError('required','img2')">*Select
+                            Image2
+                          </span>
+                        </td>
+                      </tr>
+                      <tr>
+
+                      </tr>
+                      <tr>
+                        <td>
+                          <label>Images 3</label>
+                          <input type="file" id="img3" formControlName="img3" style="width: 230px;"
+                            (change)="handleFileInput($event,'img3')">
+                          <img class="product-img" [src]="imageUrl3">
+                          <span class="text-danger" *ngIf="productform.controls['img3'].dirty &&
+                            productform.hasError('required','img3')">*Select
+                            Image3
+                          </span>
+                        </td>
+                        <td>
+                          <label>Images 4</label>
+                          <input type="file" id="img4" formControlName="img4" style="width: 230px;"
+                            (change)="handleFileInput($event,'img4')">
+                          <img class="product-img" [src]="imageUrl4">
+                          <span class="text-danger" *ngIf="productform.controls['img4'].dirty &&
+                            productform.hasError('required','img4')">*Select
+                            Image4
+                          </span>
+                        </td>
+                      </tr>
+                    </table>
+
+
+                  </div>
+
+                </form>
+              </div>
+              <!--modal footer-->
+              <div class="modal-footer">
+                <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
+                <button type="button" [disabled]="!productform.valid" class="btn btn-primary"
+                  (click)="addProduct()">Submit</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col4  Carousel">
+        <!-- Modal -->
+        <div class="modal " id="add-carousel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header btn-info">
+                <h5 class="modal-title" id="exampleModalLabel">Add Carousel</h5>
+                <button type="button" class="close" data-dismiss="modal" style="color: white;" (click)="carouselClose()"
+                  aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <!-- body -->
+                <form [formGroup]="carouselform">
+                  <table>
+                    <tr>
+                      <td>
+                        <label>Carousel</label><br>
+                        <input type="file" id="carousel" formControlName="carousel" style="width: 230px;">
+                        <span class="text-danger" *ngIf="carouselform.controls['carousel'].dirty &&
+                            productform.hasError('required','carousel')">*Select
+                          Carousel
+                        </span>
+                      </td>
+                    </tr>
+                  </table>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" (click)="addCarousel()">Submit</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="Product-Details">
+        <!-- Modal -->
+        <div class="modal " id="productDetails" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog" style="max-width: 90vw;">
+            <div class="modal-content">
+              <div class="modal-header btn-info">
+                <h5 class="modal-title" id="exampleModalLabel">Product Details</h5>
+                <div class="search-title">
+                  <input type="text" name="searchtitle" style="border-radius:22px; padding: 4px;padding-left: 30px;"
+                    placeholder="Search Product Title" class="from-control" [(ngModel)]="searchtitle">
+                </div>
+                <button type="button" class="close" data-dismiss="modal" style="color: white;"
+                  (click)="productModalClose()" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+
+              <div class="modal-body" style="height:90%; overflow: auto;">
+
+                <table class="table table-striped">
+                  <thead class="btn-dark">
+                    <tr>
+                      <th scope="col">Sno</th>
+                      <th scope="col">Title</th>
+                      <th scope="col">Size</th>
+                      <th scope="col">Price</th>
+                      <th scope="col">Category Name</th>
+                      <th scope="col">Qty</th>
+                      <th scope="col">Image</th>
+                      <th scope="col">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody *ngFor="let data of allProduct |search:searchtitle; let i=index">
+                    <tr>
+                      <th style="padding-top:0px;" scope="row">{{i+1}}</th>
+                      <td>
+                        <input type="text" class="form-control" title="Title" [(ngModel)]="data.title"
+                          name="{{data.title}}" [disabled]="data.disabled">
+                      </td>
+                      <td>
+                        <input type="text" class="form-control" title="Size" [(ngModel)]="data.size"
+                          name="{{data.size }}" [disabled]="data.disabled">
+                      </td>
+                      <td>
+                        <input type="text" class="form-control" style="margin: 0px;" title="Price"
+                          [(ngModel)]="data.price" name="{{data.price}}" [disabled]="data.disabled">
+                      </td>
+                      <td>
+                        <!-- <input type=" text" class="form-control" title="CategoryName"
+                        [(ngModel)]="data.categoryname" name="{{data.categoryname}}" [disabled]="data.disabled"> -->
+
+                        <select [(ngModel)]="data.categoryname" style="width:100%;margin-top: 0px;padding:7px;"
+                          class="form-select" [disabled]="true">
+                          <option value="Men">
+                            Men
+                          </option>
+                          <option value="Women">
+                            Women
+                          </option>
+                          <option value="Kids">
+                            Kids
+                          </option>
+                        </select>
+                      </td>
+                      <td>
+                        <input type="text" class="form-control" title="Qty" [(ngModel)]="data.qty" name="{{data.qty}}"
+                          [disabled]="data.disabled">
+                      </td>
+                      <td>
+                        <img src="{{data.image}}" style="width: 50px; height: 70px;" alt="">
+                      </td>
+
+                      <td>
+                        <div style="display:flex;align-items: center;gap: 10px; padding-top: 17px;">
+                          <button class="btn btn-primary" type="button" title="Edit" (click)="editFieldValue(i)"><i
+                              class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                          <button class="btn btn-primary" type="button" title="Save" [disabled]="data.disabled"><i
+                              class="fa fa-floppy-o" aria-hidden="true" (click)="updateValue(i)"></i></button>
+                        </div>
+                      </td>
+                    </tr>
+
+                  </tbody>
+                </table>
+
+              </div>
+              <div class="modal-footer">
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <app-footer></app-footer> -->

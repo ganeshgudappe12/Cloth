@@ -1,0 +1,18 @@
+ .footer-container {
+   width: 100%;
+   padding: 10px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   color: white;
+   background-color: #343a40 !important;
+   margin-top: 100dvw;
+   position: relative;
+
+ }
+
+ .footer-container p {
+   margin: 0;
+   font-size: 13px;
+   font-weight: normal;
+ }

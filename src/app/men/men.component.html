@@ -1,0 +1,123 @@
+<app-header></app-header>
+<div class="container-fluid ">
+
+
+  <section class="row">
+    <div class="col-2 ">
+      <div class=" mt-3">
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+          <div class="accordion-item">
+            <h5>FILTER</h5>
+          </div>
+          <hr>
+          <div class="accordion-item">
+
+            <div class="accordion-header accordion-button collapsed btnFlush" id="flush-headingOne"
+              data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false"
+              aria-controls="flush-collapseOne">
+              PRICE
+            </div>
+
+            <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+              data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">
+                <ngx-slider [(value)]="value" [options]="options"></ngx-slider>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div class="accordion-item">
+
+            <div class="accordion-header accordion-button collapsed btnFlush" id="flush-headingTwo"
+              data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false"
+              aria-controls="flush-collapseTwo">
+              SIZE
+            </div>
+
+            <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
+              data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">
+                <ul class="style:none">
+                  <li>
+                    <input type="checkbox">S <br>
+                  </li>
+                  <li>
+                    <input type="checkbox">M <br>
+                  </li>
+                  <li>
+                    <input type="checkbox">L <br>
+                  </li>
+                  <li>
+                    <input type="checkbox">XL <br>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div class="accordion-item">
+
+            <div class="accordion-header accordion-button collapsed btnFlush" id="flush-heading3"
+              data-bs-toggle="collapse" data-bs-target="#flush-collapse3" aria-expanded="false"
+              aria-controls="flush-collapse3">
+              COLOR
+            </div>
+
+            <div id="flush-collapse3" class="accordion-collapse collapse" aria-labelledby="flush-heading3"
+              data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">
+                <ul class="unstyled">
+                  <li>
+                    <input type="checkbox">RED <br>
+                  </li>
+                  <li>
+                    <input type="checkbox">BLACK <br>
+                  </li>
+                  <li>
+                    <input type="checkbox">WHITE <br>
+                  </li>
+                  <li>
+                    <input type="checkbox">BLUE <br>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <hr>
+
+        </div>
+      </div>
+    </div>
+
+
+    <main class="col-10 carddata">
+      <div class="product">
+        <div *ngFor="let product of products" class="card">
+          <img title={{product.title}} [src]="product.image" style="height:60vh;" class="card-img-top" alt="">
+          <!-- <div class="card-header">
+            <p style="font-family: math;">{{product.title | titlecase}}</p>
+          </div> -->
+          <div class="card-body " style="padding: 5px">
+
+            <div>
+
+            </div>
+            <span style="font-family: math;">{{product.title | titlecase}}</span><br>
+            <span style="font-size: large; font-weight: bold;">&#8377;{{product.price}}</span><br>
+
+            <span *ngFor="let size of product.size.split(',');"
+              style="font-family: math; ">{{size | titlecase}}&nbsp;&nbsp;</span>
+
+
+          </div>
+
+        </div>
+      </div>
+    </main>
+
+
+
+
+  </section>
+
+</div>

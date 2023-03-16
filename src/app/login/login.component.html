@@ -1,0 +1,105 @@
+<!-- <a href="https://front.codes/" class="logo" target="_blank">
+  <img src="https://assets.codepen.io/1462889/fcy.png" alt="">
+</a> -->
+
+<div class="section">
+
+  <div class="container">
+    <div class="row full-height justify-content-center">
+      <div class="col-12 text-center align-self-center py-5">
+
+        <div class="section pb-5 pt-5 pt-sm-2 text-center">
+          <h6 class="mb-0 pb-3" style="color: wheat;"><span>Log In </span><span>Sign Up</span></h6>
+          <input class="checkbox" type="checkbox" id="reg-log" name="reg-log" />
+          <label for="reg-log"></label>
+          <div class="card-3d-wrap mx-auto">
+            <div class="card-3d-wrapper">
+
+              <div class="card-front">
+                <div class="center-wrap">
+                  <div class="section text-center">
+                    <form [formGroup]="loginform">
+                      <h4 class="mb-4 pb-3">Log In</h4>
+
+                      <div class="form-group">
+                        <input type="email" name="logemail" class="form-style" formControlName="logemail"
+                          placeholder="Your Email" id="logemail">
+                        <i class="input-icon uil uil-at"></i>
+                      </div>
+                      <div class="form-group mt-2">
+                        <input type="password" name="logpass" formControlName="logpass" class="form-style"
+                          placeholder="Your Password" id="logpass">
+                        <i class="input-icon uil uil-lock-alt"></i>
+                      </div>
+                      <a class="btn mt-4" (click)="login()">submit</a>
+                      <p class="mb-0 mt-4 text-center"><a href="#0" class="link">Forgot your password?</a></p>
+                    </form>
+                  </div>
+                </div>
+
+              </div>
+              <div class="card-back">
+                <div class="center-wrap">
+                  <form [formGroup]="signup">
+                    <div class="section text-center">
+                      <h4 class="mb-4 pb-3">Sign Up</h4>
+                      <div class="form-group">
+                        <input type="text" name="logname" class="form-style" placeholder="Your Full Name" id="logname"
+                          formControlName="signupname" autocomplete="off">
+                        <i class="input-icon uil uil-user"></i>
+                      </div>
+                      <div class="form-group mt-2">
+                        <input type="email" name="signupemail" class="form-style" placeholder="Your Email"
+                          id="signupemail" formControlName="signupemail" autocomplete="off">
+                        <i class="input-icon uil uil-at"></i>
+                      </div>
+                      <div class="form-group mt-2">
+                        <input type="password" name="logpass" class="form-style" placeholder="Your Password"
+                          id="signuppass" formControlName="signuppass" autocomplete="off">
+                        <i class="input-icon uil uil-lock-alt"></i>
+                      </div>
+                      <div class="form-group mt-2">
+                        <input type="password" name="logcnfpass" class="form-style" placeholder="Your confirm Password"
+                          id="logcnfpass" autocomplete="off" formControlName="signupcnfpass">
+                        <i class="input-icon uil uil-lock-alt"></i>
+                      </div>
+                      <div class="form-group mt-2">
+                        <input type="text" name="logmob" class="form-style" placeholder="Your Mobile" id="logmob"
+                          autocomplete="off" formControlName="signupmob">
+                        <i class="input-icon uil uil-lock-alt"></i>
+                      </div>
+                      <div class="form-group mt-2">
+                        <input type="text" name="logaddress" class="form-style" placeholder="Your Address" id="logadd"
+                          autocomplete="off" formControlName="signupadd">
+                        <i class="input-icon uil uil-lock-alt"></i>
+                      </div>
+
+                      <div style="color: wheat;">
+                        <label class="form-check-label" style="margin-left: 0%;">Select Gender</label>
+                        <input type="radio" name="Gender" id="male" value="male" style="margin-left: 6%;"
+                          formControlName="Gender"><label>Male</label>
+                        <input type="radio" name="Gender" id="female" value="female" style="margin-left: 6%;"
+                          formControlName="Gender"><label>Female</label>
+                      </div>
+
+                      <div>
+                        <label style="color: wheat; margin-right: 59%;">DOB : </label>
+                        <input type="date" class="form-control" name="date-field" formControlName="signupdob" style="    margin-top: -40px;
+                        width: 58%;
+                        margin-left: 29%;" />
+                      </div>
+
+                      <a class="btn mt-4" (click)="signupData()">submit</a>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!-- <app-footer></app-footer> -->

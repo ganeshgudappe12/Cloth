@@ -1,0 +1,61 @@
+.container-fluid {
+  position: absolute;
+  top: 57px;
+}
+
+.left-side {
+  padding: 0px;
+}
+
+.list-group-item img {
+  height: 150px;
+  width: 100px;
+  padding: auto;
+  margin-top: 5px;
+  margin-bottom: 1px;
+}
+
+.list-group-item {
+  padding: 3px 0px 3px 0px;
+  margin-left: 120px;
+}
+
+.list-group {
+  position: relative;
+  bottom: 64px;
+  margin-top: 3.6rem;
+}
+
+/* test */
+
+.value-button {
+  display: inline-block;
+  border: 1px solid #ddd;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  vertical-align: middle;
+  padding: 5px 15px;
+  background: #eee;
+
+}
+
+.value-button:hover {
+  cursor: pointer;
+}
+
+input#number {
+  border: none;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  margin-top: 10px;
+  width: 40px;
+  height: 40px;
+  position: relative;
+  top: 2.5px;
+  padding: 5px 15px;
+}
+
+img {
+  cursor: pointer;
+}

@@ -1,0 +1,28 @@
+<nav class="navbar fixed-top  navbar-expand-lg bg-dark navbar-dark ">
+  <a class="navbar-brand menu" id="men" [routerLink]="['/men']" [routerLinkActive]="['active']">MEN</a>
+  <a class="navbar-brand menu" id="women" [routerLink]="['/women']" [routerLinkActive]="['active']">WOMEN</a>
+  <a class="navbar-brand menu" href="kids">KIDS</a>
+  <!-- <a class="navbar-brand menu" href="ACCESSORIES">ACCESSORIES</a> -->
+  <a class="navbar-brand menu" id="admin" [routerLink]="['/admin']" ngClass="active" *ngIf="roll"
+    [routerLinkActive]="['active']">ADMIN</a>
+
+
+  <!-- <button class="btn btn-outline-danger fa fa-sign-out" (click)="logout()">LogOut</button> -->
+  <div style="margin-left: 60%;">
+    <input type="text" name="searchtitle" style="border-radius:22px; padding: 4px;padding-left: 30px;"
+      placeholder="Search Product" class="from-control" [(ngModel)]="searchtitle">
+  </div>
+
+  <div class="menu">
+    <span class="mb-2" (click)="profileDetails()">
+      <i class="fa fa-user-o fa-2x " aria-hidden="true"></i>
+    </span><br>
+  </div>
+
+  <div class="menu">
+    <span class="mb-2">
+      <i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i>
+    </span><br>
+  </div>
+
+</nav>
