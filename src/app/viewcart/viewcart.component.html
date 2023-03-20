@@ -1,16 +1,19 @@
 <app-header></app-header>
-<div class="container-fluid">
+<div class="shopping-cart">
+  <div class="shopping-ttile">
+    <h1 style="    padding-top: 1rem;">Shopping Cart </h1>
+  </div>
   <div class="row">
-    <div class="col-9">
-      <table class="table table-striped" style="margin-top: 10%; width: 100%;">
+    <div class="col-8">
+      <table class="table table-striped" style="margin-top: 0%; margin-left: 1rem; width: 100%;">
         <thead class="btn-primary" style="background-color: #f5f1e9;color: #886619;">
           <tr>
-            <th scope="col">ITEMS</th>
-            <th scope="col">DESCRIPTION</th>
-            <th scope="col">PRICE</th>
-            <th scope="col">SIZE</th>
-            <th scope="col" style="margin-left: 5px;">QTY</th>
-            <th scope="col">SUBTOTAL</th>
+            <th>ITEMS</th>
+            <th>DESCRIPTION</th>
+            <th>PRICE</th>
+            <th>SIZE</th>
+            <th style="padding-left:1.8rem;">QTY</th>
+            <th>SUBTOTAL</th>
           </tr>
         </thead>
         <br>
@@ -19,23 +22,28 @@
           <tr style="border: 2px solid #e5decf;background-color: #fff;">
 
             <td>
-              <img src="assets/productimg/img2.webp" style="width: 6vw; height: 20vh;" alt="">
+              <img src="assets/productimg/img2.webp" style="width: 6vw; height: 20vh;align-items: center ;" alt="">
             </td>
             <td>
-              <h4>Sand Dollar Beige Printed Casual Kurta</h4>
+              <h3>
+                <a> Sand Dollar Beige Printed Casual Kurta </a>
+              </h3>
               <P>SKU :<span> ML12056-303</span></P>
               <P>Colour : <span>Biscuit</span></P>
               <P>Size : <span>L</span></P>
               <P>Net Quantity : <span>1 N</span></P>
             </td>
             <td>
-              <span style="font-size: large; font-weight: bold;">&#8377; &nbsp;{{999}}</span><br>
+              <p style="font-size:18px; font-weight:400;color: #3A302E;padding: 10px 5px;font-family: MierB-Regular;">
+                &#8377;
+                &nbsp;{{999}}</p><br>
             </td>
             <td style="width: 10%;">
               <!-- <input type="text" class="form-control" title="CategoryName" [(ngModel)]="data.categoryname"
                           name="{{data.categoryname}}" [disabled]="data.disabled"> -->
 
-              <select style="width: 75%;height:36px;padding: 5px; margin-right: 10px;" class="form-select">
+              <select style="width: 75%;height:33px;padding: 5px;border: 1.5px solid #ced4da;
+                margin-right: 10px;" class="form-select">
 
                 <option value="M">
                   M
@@ -49,30 +57,54 @@
               </select>
             </td>
             <td>
-              <div style="margin-left: 25px;">
-                <button (click)="Plus()">-</button>
-                <input type="text" id="number" [(ngModel)]="qty" [value]="1" style="width: 30px;" placeholder="1" />
-                <button (click)="Plus()">+</button>
+              <div style="margin-left: 0px;border: 1.5px solid #ced4da;width: 91.6px;height: 35px;">
+                <button (click)="Plus()" class="no-outline">-</button>
+                <input type="text" id="number" class="no-outline" readonly [(ngModel)]="qty" [value]="1"
+                  placeholder="1" />
+                <button class="no-outline" (click)="Plus()">+</button>
               </div>
             </td>
-
-
             <td>
-              <span style="font-size: large; font-weight: bold;">&#8377; &nbsp;{{999}}</span><br>
+              <p style="font-size:18px; font-weight:400;color: #3A302E;padding:12px;font-family:
+                MierB-Regular;">
+                &#8377;
+                &nbsp;{{999}}</p><br>
             </td>
-
           </tr>
-          <div>
-            <p></p>
-          </div>
-
-
-
-
         </tbody>
       </table>
     </div>
-    <div class="col-3"></div>
+    <div class="col-4">
+      <div class="clo-12 cart-right">
+        <h4 style="margin-left: 1.7rem;">Order Summary</h4>
+        <div class="row">
+          <div class="col-12 cart-grid-block">
+            <div class="col-12 cart-grid-row">
+              <div class="col-7 cart-grid-cell-1 float-left"><span>SUBTOTAL</span></div>
+              <div class="col-5 cart-grid-cell float-right">{{20000}}</div>
+            </div>
+            <hr>
+            <div class="col-12 cart-grid-row">
+              <div class="col-7 cart-grid-cell-1 float-left"><span>SHIPPING</span></div>
+              <div class="col-5 cart-grid-cell float-right"><span><label for="shippingCarges">{{00}}</label></span>
+              </div>
+            </div>
+            <hr>
+            <div class="col-12 cart-grid-row">
+              <div class="col-7 cart-grid-cell-1 float-left"><span>ORDER TOTAL</span></div>
+              <div class="col-5 cart-grid-cell float-right"><span>&#8377;{{100000}}</span>
+              </div>
+              <small class="smallTxt " style="    margin-left: 17.7rem;">Inclusive of all taxes</small>
+            </div>
+            <div class="col-12 cart-order-summary">
+
+              <button class="cart-btn"><span style="float: left;">CHECKOUT</span> <span
+                  style="float: right;">&#8377;{{100000}}</span></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
 
   </div>
-</div>

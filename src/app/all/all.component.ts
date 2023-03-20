@@ -98,10 +98,7 @@ export class AllComponent implements OnInit {
         console.log(this.getProduct, 'normal');
         console.log(JSON.stringify(this.getProduct), 'str');
         this.shared.setMessage(this.getProduct);
-        //this.shared.setMessage(this.msg);
-
         this.router.navigate(['cart']);
-        //this.router.navigate(['/cart', JSON.stringify(this.getProduct)]‌​);
         console.log(this.getProduct, 'this.getProduct');
       });
     //if (this.getProduct.length > 0)

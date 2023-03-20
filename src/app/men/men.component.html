@@ -92,8 +92,9 @@
 
     <main class="col-10 carddata">
       <div class="product">
-        <div *ngFor="let product of products" class="card">
-          <img title={{product.title}} [src]="product.image" style="height:60vh;" class="card-img-top" alt="">
+        <div *ngFor="let product of products; let i=index" class="card">
+          <img title={{product.title}} [src]="product.image" (click)="cart(i)" class="card-img-top" style="height:60vh;"
+            class="card-img-top" alt="">
           <!-- <div class="card-header">
             <p style="font-family: math;">{{product.title | titlecase}}</p>
           </div> -->

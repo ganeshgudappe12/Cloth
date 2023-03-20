@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
       .checkLogin(this.loginform.value.logemail, this.loginform.value.logpass)
       .subscribe((res: any) => {
         console.log(res, 'res');
-        if (res != undefined && res != null) {
+        if (res != undefined && res != null && res != 'User is not found') {
           sessionStorage.setItem(
             'Roll',
             btoa(JSON.stringify(res[0].roll_Name))

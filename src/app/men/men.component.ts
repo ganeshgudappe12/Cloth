@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Options } from '@angular-slider/ngx-slider';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { FormBuilder } from '@angular/forms';
 import { ApiService } from '../services/api.service';
+import { AllComponent } from '../all/all.component';
+import { SharedService } from '../shared/shared.service';
 
 @Component({
   selector: 'app-men',
@@ -18,11 +20,16 @@ export class MenComponent implements OnInit {
   };
   products: any[] = [];
   size: any[] = [];
+  getProduct: any;
+
+  @ViewChild(AllComponent) allcomp: AllComponent;
+
   constructor(
     private toastr: ToastrService,
     private router: Router,
     private formBuilder: FormBuilder,
-    private api: ApiService
+    private api: ApiService,
+    private shared: SharedService
   ) {}
 
   ngOnInit(): void {
@@ -40,7 +47,21 @@ export class MenComponent implements OnInit {
     this.api.getProduct('men').subscribe((res: any) => {
       console.log(res, 'res');
       this.products = res;
-      console.log(this.size, 'this.products');
+      console.log(this.products, 'this.products');
     });
+  }
+  cart(index: any) {
+    this.getProduct = [];
+    this.api
+      .GetProductById(this.products[index].productid)
+      .subscribe((res: any) => {
+        console.log(res, 'res');
+        this.getProduct = res;
+        console.log(this.getProduct, 'normal');
+        console.log(JSON.stringify(this.getProduct), 'str');
+        this.shared.setMessage(this.getProduct);
+        this.router.navigate(['cart']);
+        console.log(this.getProduct, 'this.getProduct');
+      });
   }
 }
